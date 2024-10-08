@@ -1,4 +1,4 @@
-from tarefa.models import Tarefa, Comment, Tag, Notificacao
+from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo
 from rest_framework import serializers
 
 class TarefaSerializers(serializers.ModelSerializer):
@@ -20,4 +20,9 @@ class TagSerializers(serializers.ModelSerializer):
 class NotificacaoSerializers(serializers.ModelSerializer):
     class Meta:
         model = Notificacao
+        fields = '__all__'
+
+class AnexoSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Anexo
         fields = '__all__'

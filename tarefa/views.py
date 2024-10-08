@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from rest_framework import viewsets, generics
-from tarefa.models import Tarefa, Comment, Tag, Notificacao
-from tarefa.serializer import TarefaSerializers, ComentarioSerializers, TagSerializers, NotificacaoSerializers
+from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo
+from tarefa.serializer import TarefaSerializers, ComentarioSerializers, TagSerializers, NotificacaoSerializers, AnexoSerializers
 
 
 # Create your views here.
@@ -25,3 +25,7 @@ class TagViewSet(viewsets.ModelViewSet):
 class NotificacaoViewSet(viewsets.ModelViewSet):
     queryset = Notificacao.objects.all()
     serializer_class = NotificacaoSerializers
+
+class AnexoViewSet(viewsets.ModelViewSet):
+    queryset = Anexo.objects.all()
+    serializer_class = AnexoSerializers

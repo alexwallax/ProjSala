@@ -48,5 +48,7 @@ class Notificacao(models.Model):
     def _str_(self):
         return self.titulo
 
-class Arquivo(models.Model):
-    ...
+class Anexo(models.Model):
+    aquivo = models.FileField(upload_to='uploads/')
+    data = models.DateField(null=True, blank=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Anexo')
