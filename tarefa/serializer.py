@@ -35,5 +35,5 @@ class ListaComentarioSerializer(serializers.ModelSerializer):
 class ListaTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['fk_user', 'fk_tarefa'] 
+        fields = ['tag_name', 'fk_task'] 
 	

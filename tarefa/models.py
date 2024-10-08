@@ -25,7 +25,7 @@ class Tarefa(models.Model):
  
 class Tag(models.Model):
     tag_name = models.CharField(max_length=70)
-    tasks = models.ManyToManyField(Tarefa, related_name='tags')
+    fk_task = models.ManyToManyField(Tarefa, related_name='tags')
  
     def _str_(self):
         return self.tag_name
