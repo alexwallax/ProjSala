@@ -26,3 +26,11 @@ class AnexoSerializers(serializers.ModelSerializer):
     class Meta:
         model = Anexo
         fields = '__all__'
+
+class ListaComentarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['fk_user', 'comment_text', 'fk_tarefa'] 
+    
+
+	
