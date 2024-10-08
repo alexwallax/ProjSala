@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from tarefa.views import TarefaViewSet, TarefaRetriveView, ComentarioViewSet, TagViewSet, NotificacaoViewSet, AnexoViewSet, ListaComentarioTarefa
+from tarefa.views import TarefaViewSet, TarefaRetriveView, ComentarioViewSet, TagViewSet, NotificacaoViewSet, AnexoViewSet, ListaComentarioTarefa, ListaTagTarefa
 from rest_framework import routers 
 
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('Tarefa/<int:pk>/', TarefaRetriveView.as_view(), name="tarefa-retrive"),
     path('task/<int:pk>/comentarios/', ListaComentarioTarefa.as_view()),
+    path('task/<int:pk>/tag/', ListaTagTarefa.as_view()),
 ]
 

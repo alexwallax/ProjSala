@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from rest_framework import viewsets, generics
 from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo
-from tarefa.serializer import TarefaSerializers, ComentarioSerializers, TagSerializers, NotificacaoSerializers, AnexoSerializers, ListaComentarioSerializer
+from tarefa.serializer import TarefaSerializers, ComentarioSerializers, TagSerializers, NotificacaoSerializers, AnexoSerializers, ListaComentarioSerializer, ListaTagSerializer
 
 # Create your views here.
 
@@ -35,3 +35,11 @@ class ListaComentarioTarefa(generics.ListAPIView):
         queryset = Comment.objects.filter(fk_task=self.kwargs['pk'])
         return queryset 
     serializer_class = ListaComentarioSerializer
+
+
+class ListaTagTarefa(generics.ListAPIView):
+    ''''Listando as Tags por taks'''
+    def get_queryset(self):
+        queryset = Tag.objects.filter(fk_task=self.kwargs['pk'])
+        return queryset 
+    serializer_class = ListaTagSerializer
