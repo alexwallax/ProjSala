@@ -47,3 +47,6 @@ class Notificacao(models.Model):
  
     def _str_(self):
         return self.titulo
+
+class Arquivo(models.Model):
+    ...
