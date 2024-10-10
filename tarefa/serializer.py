@@ -1,4 +1,4 @@
-from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo
+from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo, Usuario
 from rest_framework import serializers
 
 class TarefaSerializers(serializers.ModelSerializer):
@@ -15,6 +15,11 @@ class ComentarioSerializers(serializers.ModelSerializer):
 class TagSerializers(serializers.ModelSerializer):
     class Meta:
         model = Tag
+        fields = '__all__'
+
+class UsuarioSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
         fields = '__all__'
 
 class NotificacaoSerializers(serializers.ModelSerializer):
@@ -37,3 +42,7 @@ class ListaTagSerializer(serializers.ModelSerializer):
         model = Tag
         fields = ['tag_name', 'fk_task'] 
 	
+class ListaUsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ['nome', 'email'] 

@@ -52,3 +52,21 @@ class Anexo(models.Model):
     aquivo = models.FileField(upload_to='uploads/')
     data = models.DateField(null=True, blank=True)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Anexo')
+
+'''
+class Usuario(models.Model):
+    nome = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    cpf = models.CharField(max_length=100)
+    data_nasc = models.DateField(null=True, blank=True)
+'''
+
+class Usuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255, unique=True)
+    cpf = models.CharField(max_length=100, unique=True)
+    data_nasc = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return self.nome

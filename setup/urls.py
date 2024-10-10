@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from tarefa.views import TarefaViewSet, TarefaRetriveView, ComentarioViewSet, TagViewSet, NotificacaoViewSet, AnexoViewSet, ListaComentarioTarefa, ListaTagTarefa
+from tarefa.views import TarefaViewSet, TarefaRetriveView, ComentarioViewSet, TagViewSet, NotificacaoViewSet, AnexoViewSet, ListaComentarioTarefa, ListaTagTarefa, UsuarioViewSet
 from rest_framework import routers 
 
 
@@ -11,6 +11,7 @@ router.register('Comentario', ComentarioViewSet, basename='Commentario')
 router.register('Tag', TagViewSet, basename='Tag')
 router.register('Notificacao', NotificacaoViewSet, basename='Notificacao')
 router.register('Anexo', AnexoViewSet, basename='Anexo')
+router.register('Usuario', UsuarioViewSet, basename='Usuario')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

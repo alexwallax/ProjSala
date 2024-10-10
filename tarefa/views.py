@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from rest_framework import viewsets, generics
-from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo
-from tarefa.serializer import TarefaSerializers, ComentarioSerializers, TagSerializers, NotificacaoSerializers, AnexoSerializers, ListaComentarioSerializer, ListaTagSerializer
+from tarefa.models import Tarefa, Comment, Tag, Notificacao, Anexo, Usuario
+from tarefa.serializer import TarefaSerializers, ComentarioSerializers, TagSerializers, NotificacaoSerializers, AnexoSerializers, ListaComentarioSerializer, ListaTagSerializer, ListaUsuarioSerializer, UsuarioSerializers
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
@@ -29,6 +29,14 @@ class TagViewSet(viewsets.ModelViewSet):
     serializer_class = TagSerializers
     authentication_classes = [BasicAuthentication]
     Permission_classes = [IsAuthenticated]
+
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializers
+    authentication_classes = [BasicAuthentication]
+    Permission_classes = [IsAuthenticated]
+
 
 class NotificacaoViewSet(viewsets.ModelViewSet):
     queryset = Notificacao.objects.all()
@@ -61,5 +69,11 @@ class ListaTagTarefa(generics.ListAPIView):
     authentication_classes = [BasicAuthentication]
     Permission_classes = [IsAuthenticated]
 
-
+class ListaUsuarioTarefa(generics.ListAPIView):
+    def get_queryset(self):
+        queryset = Usuario.objects.filter(fk_task=self.kwargs['pk'])
+        return queryset 
+    serializer_class = ListaUsuarioSerializer
+    authentication_classes = [BasicAuthentication]
+    Permission_classes = [IsAuthenticated]
 
